@@ -57,4 +57,24 @@ class Topic {
       status: status ?? this.status,
     );
   }
+
+  factory Topic.fromJson(Map<String, dynamic> json) {
+    return Topic(
+      id: json['id'],
+      subjectId: json['subjectId'],
+      name: json['name'],
+      estimatedTimeInMinutes: json['estimatedTimeInMinutes'],
+      status: TopicStatus.values.firstWhere((e) => e.toString() == json['status']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'subjectId': subjectId,
+      'name': name,
+      'estimatedTimeInMinutes': estimatedTimeInMinutes,
+      'status': status.toString(),
+    };
+  }
 }

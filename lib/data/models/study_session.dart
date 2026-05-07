@@ -39,4 +39,24 @@ class StudySession {
     required this.dateTime,
     required this.durationInMinutes,
   });
+
+  factory StudySession.fromJson(Map<String, dynamic> json) {
+    return StudySession(
+      id: json['id'],
+      subjectId: json['subjectId'],
+      topicId: json['topicId'],
+      dateTime: DateTime.parse(json['dateTime']),
+      durationInMinutes: json['durationInMinutes'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'subjectId': subjectId,
+      'topicId': topicId,
+      'dateTime': dateTime.toIso8601String(),
+      'durationInMinutes': durationInMinutes,
+    };
+  }
 }
